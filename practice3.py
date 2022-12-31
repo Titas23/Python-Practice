@@ -1,27 +1,19 @@
-# password_file = open("secret_password_file.txt")
-# secret_password = password_file.read()
-# print('Enter you password.')
-# typed_password = input()
-# if typed_password == secret_password:
-#     print("Access granted")
-#     if typed_password == 'm' :
-#         print("That password is one that an idiot puts on their luggage")
-# else:
-#     print("Access denied, try again")
+import numpy as np
 
-# spam = 0 
-# if spam != 0:
-#     print('eggs')
-#     if spam >5:
-#         print('bacon')
-#     else:
-#         print('ham')
-#     print('spam')
-# print('spam')
+input_data = np.array([1,2,3])
+weights = {'node_0':np.array([1,1,1]),
+           'node_1':np.array([-1,2,2]),
+           'node_2':np.array([1,3,-1]),
+           'output_0':np.array([1,1,-1]),
+           'output_1':np.array([1,-1,1])}
+node_0_value = (input_data*weights['node_0']).sum()
+node_1_value = (input_data*weights['node_1']).sum()
+node_2_value = (input_data*weights['node_2']).sum() 
 
-# from langdetect import detect
-# text = input("Enter a language: ")
+hidden_layer_values = np.array([node_0_value, node_1_value,node_2_value])
+print(hidden_layer_values)
 
-# print(detect(text))
-
-print(round(22.5))
+output_1 = (hidden_layer_values * weights['output_0']).sum()
+print(output_1)
+output_2 = (hidden_layer_values * weights['output_1']).sum()
+print(output_2)
